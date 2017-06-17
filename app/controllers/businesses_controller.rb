@@ -1,8 +1,9 @@
 class BusinessesController < ApplicationController
 
 def index
-  @businesses = Business.all
   byebug
+  @businesses = Business.search(params[:search])
+  # @businesses = Business.all
 end
 
 def import
