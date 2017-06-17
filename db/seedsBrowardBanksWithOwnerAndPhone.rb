@@ -5,8 +5,9 @@ csv_text = File.read('BrowardWOwnerName.csv')
 
 csv = CSV.parse(csv_text)
 
+byebug
 first_line = csv.shift
-
+byebug
 clean_csv = csv - first_line
 
 @categories = []
