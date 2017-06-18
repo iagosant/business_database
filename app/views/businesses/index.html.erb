@@ -1,5 +1,7 @@
 
 <%= form_tag businesses_path, :method => 'get' do %>
+<% hidden_field_tag :direction, params[:direction] %>
+<% hidden_field_tag :sort, params[:sort] %>
 <p>
   <%= text_field_tag :search, params[:search]%>
   <%= submit_tag "Search", :name => nil %>
@@ -8,11 +10,11 @@
 <table class="striped", "responsive-table">
      <thead>
        <tr>
-           <th>Name</th>
-           <th>Category</th>
-           <th>Phone</th>
-           <th>Email</th>
-           <th>Location</th>
+           <th><%= sortable "name" %></th>
+           <th><%= sortable "category_name", "Category" %></th>
+           <th><%= sortable "phone" %></th>
+           <th><%= sortable "email" %></th>
+           <th><%= sortable "business_location", "Location" %></th>
        </tr>
      </thead>
 

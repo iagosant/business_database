@@ -3,12 +3,10 @@ validates_uniqueness_of :name, scope: [:start_date, :address, :mailing_addres]
 
 def self.search(search)
   if search
-  @businesses = Business.where(['name LIKE ?', "%#{search}%"])
+  where('name LIKE ?', "%#{search}%")
   else
-  @businesses = Business.all
+  scoped
   end
-  @businesses
-  # byebug
 end
 
 
