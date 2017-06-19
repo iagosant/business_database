@@ -1,11 +1,12 @@
 class BusinessesController < ApplicationController
-helper_method :sort_column, :sort_direction
+# helper_method :sort_column, :sort_direction
 
 def index
+  @search = Business.search(params[:q])
+  @businesses = @search.result
   # byebug
-  @businesses = Business.search(params[:search]).order(sort_column + " " + sort_direction)
-  # @businesses = Business.all
-  # @businesses = Business.all.paginate(:per_page => 50, :page => params[:page])
+  @search.build_condition
+
 end
 
 def import
