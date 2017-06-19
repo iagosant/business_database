@@ -16,18 +16,28 @@
  */
 
  @import “materialize”;
- /*$primary-color: color("grey") !default
+ @import "font-awesome-sprockets";
+ @import "font-awesome";
+ /*$primary-color: color("grey") !default*/
 
  .pretty th .current {
-  padding-right: 12px;
+  padding-right: 0px;
   background-repeat: no-repeat;
   background-position: right center;
 }
 
-.pretty th .asc {
-  background-image: url(/images/up_arrow.gif);
+.striped th .asc:after {
+  content: "\f063";
+ font-family: "FontAwesome";
+ font-size: 13px;
+ color: #039be5;
+ padding-left: 5px
 }
 
-.pretty th .desc {
-  background-image: url(/images/down_arrow.gif);
-}*/
+.striped th .desc:after {
+  content: "\f062";
+ font-family: "FontAwesome";
+ font-size: 13px;
+ color: #039be5;
+ padding-left: 5px
+}

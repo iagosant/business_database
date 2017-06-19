@@ -2,8 +2,10 @@ class BusinessesController < ApplicationController
 helper_method :sort_column, :sort_direction
 
 def index
+  # byebug
   @businesses = Business.search(params[:search]).order(sort_column + " " + sort_direction)
   # @businesses = Business.all
+  # @businesses = Business.all.paginate(:per_page => 50, :page => params[:page])
 end
 
 def import

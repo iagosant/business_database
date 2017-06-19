@@ -10,7 +10,7 @@
 <table class="striped", "responsive-table">
      <thead>
        <tr>
-           <th><%= sortable "name" %></th>
+           <th><%= sortable "name" %><i id="test"></i></th>
            <th><%= sortable "category_name", "Category" %></th>
            <th><%= sortable "phone" %></th>
            <th><%= sortable "email" %></th>
@@ -31,9 +31,4 @@
      </tbody>
    </table>
 
-
-
-<!-- <%#= form_tag businesses_path, multipart:true do %>
-<%#= file_field_tag :file %>
-<#% submit_tag 'Import' %>
-<#% end %> -->
+<!-- <%#= will_paginate @businesses %> -->
