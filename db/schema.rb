@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170617174501) do
+ActiveRecord::Schema.define(version: 20170619184758) do
 
   create_table "businesses", force: :cascade do |t|
     t.datetime "created_at",                        null: false
@@ -31,5 +31,7 @@ ActiveRecord::Schema.define(version: 20170617174501) do
     t.date     "start_date"
     t.boolean  "taxes_current",     default: false
     t.integer  "units"
+    t.string   "county"
   end
+
 end
