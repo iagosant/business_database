@@ -46,5 +46,10 @@
 
 .custom_search select {
   display: inline-block;
-  width: 300px;
+  width: 200px;
+}
+
+.custom_search input {
+  width: 200px;
+  text-align: center;
 }
