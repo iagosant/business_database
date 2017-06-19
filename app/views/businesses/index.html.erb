@@ -1,19 +1,10 @@
 
 <%= search_form_for @search do |f| %>
 <%= f.condition_fields do |c| %>
-<div class="input-field custom_search" >
-  <%= c.attribute_fields do |a| %>
-
-    <%= a.attribute_select %>
-  <% end %>
-
-  <%= c.predicate_select %>
-  <%= c.value_fields do |v| %>
-    <%= v.text_field :value %>
-  <% end %>
-</div>
+<%= render "condition_fields", f: c %>
 <% end %>
-<div id="2" class="actions"><%= f.submit "Search" %></div>
+<p><%= link_to_add_fields "Add conditions", f, :condition %></p>
+<div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 
 <!-- <div class="field">
