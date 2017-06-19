@@ -1,20 +1,47 @@
 
-<%= form_tag businesses_path, :method => 'get' do %>
+<%= search_form_for @search do |f| %>
+<%= f.condition_fields do |c| %>
+<div class="input-field custom_search" >
+  <%= c.attribute_fields do |a| %>
+
+    <%= a.attribute_select %>
+  <% end %>
+
+  <%= c.predicate_select %>
+  <%= c.value_fields do |v| %>
+    <%= v.text_field :value %>
+  <% end %>
+</div>
+<% end %>
+<div id="2" class="actions"><%= f.submit "Search" %></div>
+<% end %>
+
+<!-- <div class="field">
+  <%#= f.label :name_cont, "Name contains" %>
+  <%#= f.text_field :name_cont %>
+</div>
+<div class="field">
+  <%#= f.label :name_not_cont, "Name does not include" %>
+  <%#= f.text_field :name_not_cont %>
+</div>
+<div class="actions"><%#= f.submit "Search" %></div> -->
+
+<!-- <%#= form_tag businesses_path, :method => 'get' do %>
 <% hidden_field_tag :direction, params[:direction] %>
 <% hidden_field_tag :sort, params[:sort] %>
 <p>
-  <%= text_field_tag :search, params[:search]%>
-  <%= submit_tag "Search", :name => nil %>
+  <%#= text_field_tag :search, params[:search]%>
+  <%#= submit_tag "Search", :name => nil %>
 </p>
-<% end %>
+<#% end %> -->
 <table class="striped", "responsive-table">
      <thead>
        <tr>
-           <th><%= sortable "name" %><i id="test"></i></th>
-           <th><%= sortable "category_name", "Category" %></th>
-           <th><%= sortable "phone" %></th>
-           <th><%= sortable "email" %></th>
-           <th><%= sortable "business_location", "Location" %></th>
+           <th><%= sort_link @search, :name, "Name" %></th>
+           <th><%= sort_link @search, :category_name, "Category name" %></th>
+           <th><%= sort_link @search, :phone, "Phone" %></th>
+           <th><%= sort_link @search, :email, "Email" %></th>
+           <th><%= sort_link @search, :business_address, "Business location" %></th>
        </tr>
      </thead>
 
