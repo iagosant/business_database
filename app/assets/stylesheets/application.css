@@ -44,12 +44,16 @@
 }*/
 /**************ARROWS UP AND DOWN, BEFORE RANSACK************/
 
-.custom_search select {
+.custom_search select{
   display: inline-block;
   width: 200px;
 }
 
-.custom_search input {
+.custom_search input{
   width: 200px;
   text-align: center;
+}
+
+.pagination div{
+  text-align: right;
 }

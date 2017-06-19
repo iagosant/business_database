@@ -3,7 +3,7 @@ class BusinessesController < ApplicationController
 
 def index
   @search = Business.search(params[:q])
-  @businesses = @search.result
+  @businesses = @search.result.paginate(:per_page => 50, :page => params[:page])
   # byebug
   @search.build_condition
 

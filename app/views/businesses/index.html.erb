@@ -7,24 +7,8 @@
 <div class="actions"><%= f.submit "Search" %></div>
 <% end %>
 
-<!-- <div class="field">
-  <%#= f.label :name_cont, "Name contains" %>
-  <%#= f.text_field :name_cont %>
-</div>
-<div class="field">
-  <%#= f.label :name_not_cont, "Name does not include" %>
-  <%#= f.text_field :name_not_cont %>
-</div>
-<div class="actions"><%#= f.submit "Search" %></div> -->
+<div class="pagination"><%= will_paginate @businesses %></div>
 
-<!-- <%#= form_tag businesses_path, :method => 'get' do %>
-<% hidden_field_tag :direction, params[:direction] %>
-<% hidden_field_tag :sort, params[:sort] %>
-<p>
-  <%#= text_field_tag :search, params[:search]%>
-  <%#= submit_tag "Search", :name => nil %>
-</p>
-<#% end %> -->
 <table class="striped", "responsive-table">
      <thead>
        <tr>
@@ -48,5 +32,3 @@
        <% end %>
      </tbody>
    </table>
-
-<!-- <%#= will_paginate @businesses %> -->
