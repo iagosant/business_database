@@ -26,5 +26,6 @@ b.taxes_current = true
 else b.taxes_current = false
 end
 b.units = row[8]
+b.county = "Miami-Dade"
 b.save
 end
