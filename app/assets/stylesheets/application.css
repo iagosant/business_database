@@ -55,3 +55,8 @@
 .pagination div{
   text-align: right;
 }
+
+#save_search_form input{
+  width: 200px;
+  text-align: center;
+}
