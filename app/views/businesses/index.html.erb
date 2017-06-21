@@ -1,22 +1,41 @@
 
-<%= search_form_for @search do |f| %>
+
+<%= search_form_for @search_initialize do |f| %>
 <%= f.condition_fields do |c| %>
 <%= render "condition_fields", f: c %>
 <% end %>
 <p><%= link_to_add_fields "Add conditions", f, :condition %></p>
-<div class="actions"><%= f.submit "Search" %></div>
+<% @test = (!@search.nil?) ? @search.id : nil %>
+<%= hidden_field_tag("existing_search", @test) %>
+<div class="actions"><%= f.submit (@search.nil?) ? "Search" : "Update" %></div>
 <% end %>
 
 <div class="pagination"><%= will_paginate @businesses %></div>
 
+<%= form_for :searches, :url => new_search_path, method: "get", :html => { :id => "save_search_form" } do |f| %>
+<%= f.text_field :name %>
+<%= hidden_field_tag("path", request.fullpath, :id => "path") %>
+<%= submit_tag "Save search" %>
+<% end %>
+
+<div class="list">
+  <ul>
+    <p>Saved searches</p>
+    <% @searches.each do |search| %>
+    <li><%= link_to search.name, search_path(:id => search.id), class: "search_link" %></li>
+    <%= link_to 'Forget', search_url(:id => search.id), data: { confirm: 'Are you sure?' }, method: :delete, :remote => true %>
+    <% end %>
+  </ul>
+</div>
+
 <table class="striped", "responsive-table">
      <thead>
        <tr>
-           <th><%= sort_link @search, :name, "Name" %></th>
-           <th><%= sort_link @search, :category_name, "Category name" %></th>
-           <th><%= sort_link @search, :phone, "Phone" %></th>
-           <th><%= sort_link @search, :email, "Email" %></th>
-           <th><%= sort_link @search, :business_address, "Business location" %></th>
+           <th><%= sort_link @search_initialize, :name, "Name" %></th>
+           <th><%= sort_link @search_initialize, :category_name, "Category name" %></th>
+           <th><%= sort_link @search_initialize, :phone, "Phone" %></th>
+           <th><%= sort_link @search_initialize, :email, "Email" %></th>
+           <th><%= sort_link @search_initialize, :business_address, "Business location" %></th>
        </tr>
      </thead>
 

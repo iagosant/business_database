@@ -1,18 +1,22 @@
 class BusinessesController < ApplicationController
-# helper_method :sort_column, :sort_direction
 
 def index
-  @search = Business.search(params[:q])
-  @businesses = @search.result.paginate(:per_page => 50, :page => params[:page])
-  # byebug
-  @search.build_condition
+  @searches = Search.all
+  @search_initialize = Business.search(params[:q])
+  @businesses = @search_initialize.result.paginate(:per_page => 50, :page => params[:page])
+  @search_initialize.build_condition
 
+  if !Search.find_by(query: request.fullpath).nil?
+    @search = Search.find_by(query: request.fullpath)
+  elsif params[:existing_search] != nil
+    @search = Search.find(params[:existing_search])
+    @search.update(query: request.fullpath)
+  end
 end
 
 def import
 Business.import(params[:file])
 redirect_to root_url, notice: 'Products imported.'
-
 end
 
 def destroy

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # root to: 'businesses_index'
 
   get '/businesses', to: 'businesses#index'
+  resources :searches
 end
 # Example of regular route:
 #   get 'products/:id' => 'catalog#view'
